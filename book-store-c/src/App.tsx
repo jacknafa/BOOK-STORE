@@ -1,26 +1,22 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import Layout from './components/layout/Layout';
+import Home from './pages/Home';
+import { GlobalStyle } from './style/global';
+import { ThemeProvider } from 'styled-components';
+import { ThemeName, dark, getTheme, light } from './style/theme';
+import ThemeSwitcher from './components/header/ThemeSwitcher';
+import { useContext, useState } from 'react';
+import { BookStroeThemeProcider, ThemeContext } from './context/themeContext';
 
 function App() {
+  // return <Layout children={<Home />} />; 아래와 동일
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <BookStroeThemeProcider>
+        <ThemeSwitcher />
+        <Layout>
+          <Home />
+        </Layout>
+    </BookStroeThemeProcider>
+  )
 }
 
 export default App;
