@@ -16,7 +16,7 @@ export const state = {
 
 export const ThemeContext = createContext<State>(state);
 
-export const BookStroeThemeProcider = ({children} : { children: ReactNode}) =>{
+export const BookStoreThemeProvider = ({children} : { children: ReactNode}) =>{
     const [themeName, setThemeName] = useState<ThemeName>
     (DEFAULT_THEME_NAME);
 
@@ -33,8 +33,8 @@ export const BookStroeThemeProcider = ({children} : { children: ReactNode}) =>{
     return(
         <ThemeContext.Provider value={{themeName, toggleTheme}}>
             <ThemeProvider theme={getTheme(themeName)}>
-            {children}
-            <GlobalStyle themeName={themeName} />
+                <GlobalStyle themeName={themeName} />
+                    {children}
             </ThemeProvider>
         </ThemeContext.Provider>
     );
